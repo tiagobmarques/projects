@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+h1 {
+  font-size: 22px;
+}
+
+.required_fields {
+  font-size: 12px;
+}
+
+.btn-footer-registration{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  margin-top: 40px;
+  border-top: 1px solid #c3c3c3;
+}
