@@ -6,7 +6,7 @@
   <p class="required_fields">*Required fields</p>
 </section>
 
-<main>
+<section>
   <form (ngSubmit)="saveContact()">
     <div class="row">
       <div class="col-sm-2">
@@ -20,10 +20,9 @@
         <input type="text" class="form-control form-control-sm" id="name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
       </div>
     </div>
+    <div class="footer-actions fixed-bottom">
+      <button type="submit" class="btn btn-secondary btn-submit" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary btn-submit">Complete registration</button>
+    </div>
   </form>
-</main>
-
-<footer>
-  <button type="submit" class="btn btn-secondary btn-submit">Cancel</button>
-  <button type="submit" class="btn btn-primary btn-submit">Complete registration</button>
-</footer>
+</section>

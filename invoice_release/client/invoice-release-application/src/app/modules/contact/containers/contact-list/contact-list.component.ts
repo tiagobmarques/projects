@@ -1,3 +1,5 @@
+import { IContact } from './../../models/contact.interface';
+import { ContactService } from './../../services/contact.service';
 import { Component, OnInit} from "@angular/core";
 
 @Component({
@@ -7,8 +9,13 @@ import { Component, OnInit} from "@angular/core";
 })
 export class ContactListComponent implements OnInit {
 
-  constructor() { }
+  contactList: IContact[];
+
+  constructor(private service: ContactService) { }
 
   ngOnInit() {
+    this.service.getContactList().subscribe((rows: IContact[]) => {
+      this.contactList = rows;
+    });
   }
 }

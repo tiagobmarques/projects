@@ -3,3 +3,23 @@
     Contact Registry
   </a>
 </app-page-header>
+
+<section>
+  <table class="table table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="contactList?.length > 0; else emptyList">
+      <tr *ngFor="let contact of contactList">
+        <td>{{contact?.id}}</td>
+        <td>{{contact?.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #emptyList>
+    <p>Nenhuma operação cadastrada</p>
+  </ng-template>
+</section>

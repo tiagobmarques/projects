@@ -15,14 +15,10 @@ export class ContactService {
     this.contactList = [];
   }
 
-  /*get listaTransferencias() {
-    return this.listaTransferencia;
+  getContactList(): Observable<IContact[]>{
+    return this.httpClient.get<IContact[]>(this.url);
   }
 
-  todas(): Observable<Transferencia[]>{
-    return this.httpClient.get<Transferencia[]>(this.url);
-  }
-*/
   saveContact(contact: IContact): Observable<IContact> {
     return this.httpClient.post<IContact>(this.url, contact);
   }

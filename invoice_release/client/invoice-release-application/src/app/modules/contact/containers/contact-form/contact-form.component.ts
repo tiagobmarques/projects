@@ -1,5 +1,6 @@
 import { ContactService } from '../../services/contact.service';
 import { Component, OnInit} from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -11,19 +12,22 @@ export class ContactFormComponent implements OnInit {
   id: number;
   name: String;
 
-  constructor(private service: ContactService) { }
+  constructor(private service: ContactService, private router: Router) { }
 
   ngOnInit() {
   }
 
   saveContact() {
-    /*const contact = {id: this.id, name: this.name};
+    const contact = {id: this.id, name: this.name};
 
     this.service.saveContact(contact).subscribe(result => {
-      //Add more code here
+      this.router.navigateByUrl("contact/list");
     }, (error) => {
       console.error(error);
+    });
+  }
 
-    });*/
+  cancel() {
+    this.router.navigateByUrl("contact/list");
   }
 }
