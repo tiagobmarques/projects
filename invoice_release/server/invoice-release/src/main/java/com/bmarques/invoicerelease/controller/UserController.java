@@ -1,7 +1,7 @@
 package com.bmarques.invoicerelease.controller;
 
-import com.bmarques.invoicerelease.model.ContactEntity;
-import com.bmarques.invoicerelease.service.ContactService;
+import com.bmarques.invoicerelease.model.UserEntity;
+import com.bmarques.invoicerelease.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,29 +18,30 @@ import reactor.core.scheduler.Schedulers;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/v1/contact")
-public class ContactController {
+@RequestMapping("/v1/user")
+public class UserController {
 
   @Autowired
-  private ContactService contactService;
+  private UserService userService;
 
   @GetMapping
-  public Mono<List<ContactEntity>> getAllContacts() {
-    return Mono.fromCallable(() -> contactService.getAllContacts())
+  public Mono<List<UserEntity>> getAllUsers() {
+    return Mono.fromCallable(() -> userService.getAllUsers())
         .subscribeOn(Schedulers.boundedElastic());
   }
 
   @GetMapping("/{id}")
-  public Mono<ContactEntity> getContactById(@PathVariable Integer id) {
-    return Mono.fromCallable(() -> contactService.getContactById(id))
-        .map(contact -> contact
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Code not found")))
+  public Mono<UserEntity> getUserById(@PathVariable Integer id) {
+    return Mono.fromCallable(() -> userService.getUserById(id))
+        .map(user -> user
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                                                           "Code not found")))
         .subscribeOn(Schedulers.boundedElastic());
   }
 
   @PostMapping
-  public Mono<ContactEntity> saveContact(@RequestBody ContactEntity contactEntity) {
-    return Mono.fromCallable(() -> contactService.save(contactEntity))
+  public Mono<UserEntity> saveUser(@RequestBody UserEntity userEntity) {
+    return Mono.fromCallable(() -> userService.save(userEntity))
         .subscribeOn(Schedulers.boundedElastic());
   }
 }
