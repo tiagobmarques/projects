@@ -1,0 +1,32 @@
+<app-page-header [title]="'Participant list'">
+  <a class="btn btn-outline-primary" routerLink="/participant/form">
+    Participant Registry
+  </a>
+</app-page-header>
+
+<section>
+  <table class="table table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Identification Type</th>
+        <th scope="col">Identification Type</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="participantList?.length > 0; else emptyList">
+      <tr *ngFor="let participant of participantList">
+        <td>{{participant?.id}}</td>
+        <td>{{participant?.name}}</td>
+        <td>{{participant?.registrationType}}</td>
+        <td>{{participant?.registrationNumber}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #emptyList>
+    <tbody>
+      <tr>
+        <td colspan="3" class="text-center">There is no participant registered</td>
+      </tr>
+    </tbody>
+  </ng-template>

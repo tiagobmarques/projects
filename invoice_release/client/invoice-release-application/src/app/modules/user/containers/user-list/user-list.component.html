@@ -1,0 +1,30 @@
+<app-page-header [title]="'User list'">
+  <a class="btn btn-outline-primary" routerLink="/user/form">
+    User Registry
+  </a>
+</app-page-header>
+
+<section>
+  <table class="table table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Login</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="userList?.length > 0; else emptyList">
+      <tr *ngFor="let user of userList">
+        <td>{{user?.id}}</td>
+        <td>{{user?.name}}</td>
+        <td>{{user?.login}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #emptyList>
+    <tbody>
+      <tr>
+        <td colspan="3" class="text-center">There is no user registered</td>
+      </tr>
+    </tbody>
+  </ng-template>
