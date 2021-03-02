@@ -1,7 +1,7 @@
 package com.bmarques.invoicerelease.model;
 
-import java.util.Set;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -17,16 +17,19 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "user")
-public class UserEntity {
+@Entity(name = "participant")
+public class ParticipantEntity {
 
   @Id
   private Integer id;
-  private String login;
-  private String password;
+  @Column(name = "registration_type")
+  private String registrationType;
+  @Column(name = "registration_number")
+  private String registrationNumber;
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "contact_id", referencedColumnName = "id")
   private ContactEntity contact;
 
 }
+

@@ -1,4 +1,4 @@
-package com.bmarques.invoicerelease.controller;
+package com.bmarques.invoicerelease.controller.contact;
 
 import com.bmarques.invoicerelease.model.ContactEntity;
 import com.bmarques.invoicerelease.service.ContactService;

@@ -1,8 +1,9 @@
-package com.bmarques.invoicerelease.controller;
+package com.bmarques.invoicerelease.controller.user;
 
 import com.bmarques.invoicerelease.model.UserEntity;
 import com.bmarques.invoicerelease.service.UserService;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,9 +25,13 @@ public class UserController {
   @Autowired
   private UserService userService;
 
+  @Autowired
+  private UserMapper mapper;
+
   @GetMapping
-  public Mono<List<UserEntity>> getAllUsers() {
+  public Mono<List<UserResponse>> getAllUsers() {
     return Mono.fromCallable(() -> userService.getAllUsers())
+        .map(user -> user.stream().map(mapper::toResponse).collect(Collectors.toList()))
         .subscribeOn(Schedulers.boundedElastic());
   }
 
@@ -40,8 +45,10 @@ public class UserController {
   }
 
   @PostMapping
-  public Mono<UserEntity> saveUser(@RequestBody UserEntity userEntity) {
+  public Mono<UserResponse> saveUser(@RequestBody UserRequest userRequest) {
+    UserEntity userEntity = mapper.toEntity(userRequest);
     return Mono.fromCallable(() -> userService.save(userEntity))
+        .map(mapper::toResponse)
         .subscribeOn(Schedulers.boundedElastic());
   }
 }
