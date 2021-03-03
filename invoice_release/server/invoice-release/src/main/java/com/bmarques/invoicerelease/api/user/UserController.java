@@ -1,7 +1,7 @@
-package com.bmarques.invoicerelease.controller.user;
+package com.bmarques.invoicerelease.api.user;
 
-import com.bmarques.invoicerelease.model.UserEntity;
-import com.bmarques.invoicerelease.service.UserService;
+import com.bmarques.invoicerelease.domain.user.UserEntity;
+import com.bmarques.invoicerelease.domain.user.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;

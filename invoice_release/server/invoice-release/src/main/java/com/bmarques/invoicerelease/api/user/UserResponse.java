@@ -1,17 +1,22 @@
-package com.bmarques.invoicerelease.controller.participant;
+package com.bmarques.invoicerelease.api.user;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Builder
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class ParticipantRequest {
+@NoArgsConstructor
+public class UserResponse {
+
   private Integer id;
   private String name;
-  private String registrationType;
-  private String registrationNumber;
+  private String login;
+  private String password;
+
 }
+

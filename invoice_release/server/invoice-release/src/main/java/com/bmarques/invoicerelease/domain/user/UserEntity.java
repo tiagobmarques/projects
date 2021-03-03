@@ -1,6 +1,6 @@
-package com.bmarques.invoicerelease.model;
+package com.bmarques.invoicerelease.domain.user;
 
-import java.util.Set;
+import com.bmarques.invoicerelease.domain.contact.ContactEntity;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;

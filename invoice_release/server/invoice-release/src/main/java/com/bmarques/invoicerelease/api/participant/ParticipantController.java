@@ -1,7 +1,7 @@
-package com.bmarques.invoicerelease.controller.participant;
+package com.bmarques.invoicerelease.api.participant;
 
-import com.bmarques.invoicerelease.model.ParticipantEntity;
-import com.bmarques.invoicerelease.service.ParticipantService;
+import com.bmarques.invoicerelease.domain.participant.ParticipantEntity;
+import com.bmarques.invoicerelease.domain.participant.ParticipantService;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;

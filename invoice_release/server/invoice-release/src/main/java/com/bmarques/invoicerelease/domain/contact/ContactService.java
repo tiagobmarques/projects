@@ -1,7 +1,7 @@
-package com.bmarques.invoicerelease.service;
+package com.bmarques.invoicerelease.domain.contact;
 
-import com.bmarques.invoicerelease.model.ContactEntity;
-import com.bmarques.invoicerelease.repository.ContactRepository;
+import com.bmarques.invoicerelease.domain.contact.ContactEntity;
+import com.bmarques.invoicerelease.domain.contact.ContactRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

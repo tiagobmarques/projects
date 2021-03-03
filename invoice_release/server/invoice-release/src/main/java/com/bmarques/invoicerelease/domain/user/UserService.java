@@ -1,7 +1,7 @@
-package com.bmarques.invoicerelease.service;
+package com.bmarques.invoicerelease.domain.user;
 
-import com.bmarques.invoicerelease.model.UserEntity;
-import com.bmarques.invoicerelease.repository.UserRepository;
+import com.bmarques.invoicerelease.domain.user.UserEntity;
+import com.bmarques.invoicerelease.domain.user.UserRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

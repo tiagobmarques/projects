@@ -1,7 +1,7 @@
-package com.bmarques.invoicerelease.controller.user;
+package com.bmarques.invoicerelease.api.user;
 
-import com.bmarques.invoicerelease.model.ContactEntity;
-import com.bmarques.invoicerelease.model.UserEntity;
+import com.bmarques.invoicerelease.domain.contact.ContactEntity;
+import com.bmarques.invoicerelease.domain.user.UserEntity;
 import org.springframework.stereotype.Component;
 
 @Component

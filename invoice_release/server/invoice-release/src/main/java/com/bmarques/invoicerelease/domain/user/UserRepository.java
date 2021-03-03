@@ -1,6 +1,6 @@
-package com.bmarques.invoicerelease.repository;
+package com.bmarques.invoicerelease.domain.user;
 
-import com.bmarques.invoicerelease.model.UserEntity;
+import com.bmarques.invoicerelease.domain.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.bmarques.invoicerelease.model;
+package com.bmarques.invoicerelease.domain.contact;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
