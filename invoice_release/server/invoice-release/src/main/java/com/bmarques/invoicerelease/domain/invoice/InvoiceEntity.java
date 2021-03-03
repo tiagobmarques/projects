@@ -1,6 +1,7 @@
-package com.bmarques.invoicerelease.domain.participant;
+package com.bmarques.invoicerelease.domain.invoice;
 
-import com.bmarques.invoicerelease.domain.contact.ContactEntity;
+import com.bmarques.invoicerelease.domain.participant.ParticipantEntity;
+import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,18 +19,19 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "participant")
-public class ParticipantEntity {
+@Entity(name = "invoice")
+public class InvoiceEntity {
 
   @Id
   private Integer id;
-  @Column(name = "registration_type")
-  private String registrationType;
-  @Column(name = "registration_number")
-  private String registrationNumber;
+  @Column(name = "installment_date")
+  private LocalDate installmentDate;
+  private String document;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "contact_id", referencedColumnName = "id")
-  private ContactEntity contact;
+  @JoinColumn(name = "participant_id", referencedColumnName = "id")
+  private ParticipantEntity participant;
+
+  private Double value;
 
 }

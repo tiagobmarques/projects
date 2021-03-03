@@ -46,7 +46,7 @@ public class UserController {
 
   @PostMapping
   public Mono<UserResponse> saveUser(@RequestBody UserRequest userRequest) {
-    UserEntity userEntity = mapper.toEntity(userRequest);
+    var userEntity = mapper.toEntity(userRequest);
     return Mono.fromCallable(() -> userService.save(userEntity))
         .map(mapper::toResponse)
         .subscribeOn(Schedulers.boundedElastic());

@@ -1,7 +1,8 @@
-package com.bmarques.invoicerelease.api.participant;
+package com.bmarques.invoicerelease.api.invoice;
 
+import com.bmarques.invoicerelease.domain.invoice.InvoiceEntity;
+import com.bmarques.invoicerelease.domain.invoice.InvoiceService;
 import com.bmarques.invoicerelease.domain.participant.ParticipantEntity;
-import com.bmarques.invoicerelease.domain.participant.ParticipantService;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,36 +20,35 @@ import reactor.core.scheduler.Schedulers;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/v1/participant")
-public class ParticipantController {
+@RequestMapping("/v1/invoice")
+public class InvoiceController {
 
   @Autowired
-  private ParticipantService participantService;
-
+  private InvoiceService invoiceService;
   @Autowired
-  private ParticipantMapper mapper;
+  private InvoiceMapper mapper;
 
   @GetMapping
-  public Mono<List<ParticipantResponse>> getAllParticipants() {
-    return Mono.fromCallable(() -> participantService.getAllParticipants())
-        .map(participant -> participant.stream().map(mapper::toResponse)
+  public Mono<List<InvoiceResponse>> getAllInvoices() {
+    return Mono.fromCallable(() -> invoiceService.getAllInvoices())
+        .map(invoice -> invoice.stream().map(mapper::toResponse)
             .collect(Collectors.toList()))
         .subscribeOn(Schedulers.boundedElastic());
   }
 
   @GetMapping("/{id}")
-  public Mono<ParticipantEntity> getParticipantById(@PathVariable Integer id) {
-    return Mono.fromCallable(() -> participantService.getParticipantById(id))
-        .map(participant -> participant
+  public Mono<InvoiceEntity> getInvoiceById(@PathVariable Integer id) {
+    return Mono.fromCallable(() -> invoiceService.getInvoiceById(id))
+        .map(invoice -> invoice
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                                                            "Code not found")))
         .subscribeOn(Schedulers.boundedElastic());
   }
 
   @PostMapping
-  public Mono<ParticipantResponse> saveParticipant(@RequestBody ParticipantRequest participantRequest) {
-    var participantEntity = mapper.toEntity(participantRequest);
-    return Mono.fromCallable(() -> participantService.save(participantEntity))
+  public Mono<InvoiceResponse> saveInvoice(@RequestBody InvoiceRequest invoiceRequest) {
+    var invoiceEntity = mapper.toEntity(invoiceRequest);
+    return Mono.fromCallable(() -> invoiceService.save(invoiceEntity))
         .map(mapper::toResponse)
         .subscribeOn(Schedulers.boundedElastic());
   }
