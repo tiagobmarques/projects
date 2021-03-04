@@ -1,0 +1,40 @@
+<app-page-header [title]="'Invoice registry'">
+  <a class="btn btn-outline-primary" routerLink="/invoice/list">Invoice list</a>
+</app-page-header>
+
+<section>
+  <p class="required_fields">*Required fields</p>
+</section>
+
+<section>
+  <form (ngSubmit)="saveInvoice()">
+    <div class="row">
+      <div class="col-sm-2">
+        <label for="id_contact" class="form-label">ID *</label>
+        <input type="number" class="form-control form-control-sm" id="id_contact" [(ngModel)]="id" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="col-sm-4">
+        <label for="name" class="form-label">Participant *</label>
+        <input type="text" class="form-control form-control-sm" id="name" [(ngModel)]="participant.name" [ngModelOptions]="{standalone: true}" >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <label for="document" class="form-label">Document *</label>
+        <input type="number" class="form-control form-control-sm" id="document" [(ngModel)]="document" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="col-sm-2">
+        <label for="installment_date" class="form-label">Installment Date *</label>
+        <input type="date" class="form-control form-control-sm" id="installment_date" [(ngModel)]="installmentDate" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="col-sm-2">
+        <label for="value" class="form-label">Value *</label>
+        <input type="number" class="form-control form-control-sm" id="value" [(ngModel)]="value" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <div class="footer-actions fixed-bottom">
+      <button type="submit" class="btn btn-secondary btn-submit" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary btn-submit">Complete registration</button>
+    </div>
+  </form>
+</section>

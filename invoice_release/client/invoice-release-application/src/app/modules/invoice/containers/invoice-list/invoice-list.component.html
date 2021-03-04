@@ -1,0 +1,34 @@
+<app-page-header [title]="'Invoice list'">
+  <a class="btn btn-outline-primary" routerLink="/invoice/form">
+    Invoice Registry
+  </a>
+</app-page-header>
+
+<section>
+  <table class="table table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Document</th>
+        <th scope="col">Installment Date</th>
+        <th scope="col">Participant</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="invoiceList?.length > 0; else emptyList">
+      <tr *ngFor="let invoice of invoiceList">
+        <td>{{invoice?.id}}</td>
+        <td class="text-right">{{invoice?.document}}</td>
+        <td>{{invoice?.installmentDate}}</td>
+        <td>{{invoice?.participant.name}}</td>
+        <td class="text-right">{{invoice?.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #emptyList>
+    <tbody>
+      <tr>
+        <td colspan="3" class="text-center">There is no contact registered</td>
+      </tr>
+    </tbody>
+  </ng-template>

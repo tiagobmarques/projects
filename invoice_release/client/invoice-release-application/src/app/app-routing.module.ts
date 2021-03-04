@@ -21,6 +21,11 @@ const routes: Routes = [
           import('./modules/participant/participant.module').then(m => m.ParticipantModule),
       },
       {
+        path: 'invoice',
+        loadChildren: () =>
+          import('./modules/invoice/invoice.module').then(m => m.InvoiceModule),
+      },
+      {
         path: '**',
         redirectTo: '/contact/list',
       },
