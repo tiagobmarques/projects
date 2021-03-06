@@ -13,10 +13,14 @@
         <label for="id_contact" class="form-label">ID *</label>
         <input type="number" class="form-control form-control-sm" id="id_contact" [(ngModel)]="id" [ngModelOptions]="{standalone: true}">
       </div>
+
       <div class="col-sm-4">
         <label for="name" class="form-label">Participant *</label>
-        <input type="text" class="form-control form-control-sm" id="name" [(ngModel)]="participant.name" [ngModelOptions]="{standalone: true}" >
+        <select class="custom-select mr-sm-2" id="name" [(ngModel)]="participantId" (ngModelChange)="teste($event)" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let participantRow of participantList" [value]="participantRow.id">{{participantRow.name}}</option>
+        </select>
       </div>
+
     </div>
     <div class="row">
       <div class="col-sm-2">

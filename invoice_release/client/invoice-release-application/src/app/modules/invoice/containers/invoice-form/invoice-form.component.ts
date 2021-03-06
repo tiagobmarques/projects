@@ -1,3 +1,5 @@
+import { IInvoice } from './../../models/invoice.interface';
+import { ParticipantService } from './../../../participant/services/participant.service';
 import { IParticipant } from './../../../participant/models/participant.interface';
 import { InvoiceService } from './../../services/invoice.service';
 import { Component, OnInit} from "@angular/core";
@@ -13,21 +15,34 @@ export class InvoiceFormComponent implements OnInit {
   id: number;
   installmentDate: Date;
   document: String;
-  participant: IParticipant;
+  participantId: number;
   value: number;
 
-  constructor(private service: InvoiceService, private router: Router) {
-    this.participant = {id: 1, name: '', registrationType: 'CPF', registrationNumber: '06606787998'};
+  participantList : IParticipant[];
+
+  constructor(private service: InvoiceService, private participantService: ParticipantService, private router: Router) {
+    //this.participant = {id: 1, name: '', registrationType: 'CPF', registrationNumber: '06606787998'};
    }
 
   ngOnInit() {
+    this.participantService.getParticipantList().subscribe((rows: IParticipant[]) => {
+      console.log(rows);
+
+      this.participantList = rows;
+    });
+  }
+
+  teste(elemento) {
+    console.log(elemento);
+
   }
 
   saveInvoice() {
-    const participant1 : IParticipant = {id: 1, name: 'Tete', registrationType: 'CPF', registrationNumber: '32165498712'};
 
-    const invoice = {id: this.id, installmentDate: this.installmentDate, document: this.document,
-                     participant: this.participant, value: this.value};
+    console.log(this.participantId);
+
+    const invoice :IInvoice = {id: this.id, installmentDate: this.installmentDate, document: this.document,
+                     participantId: this.participantId, value: this.value};
 
     this.service.saveInvoice(invoice).subscribe(result => {
       this.router.navigateByUrl("invoice/list");
@@ -37,6 +52,6 @@ export class InvoiceFormComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigateByUrl("contact/list");
+    this.router.navigateByUrl("invoie/list");
   }
 }

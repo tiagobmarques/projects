@@ -1,4 +1,4 @@
-import { IInvoice } from './../models/invoice.interface';
+import { IInvoice, IInvoiceList } from './../models/invoice.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -15,8 +15,8 @@ export class InvoiceService {
     this.invoiceList = [];
   }
 
-  getInvoiceList(): Observable<IInvoice[]>{
-    return this.httpClient.get<IInvoice[]>(this.url);
+  getInvoiceList(): Observable<IInvoiceList[]>{
+    return this.httpClient.get<IInvoiceList[]>(this.url);
   }
 
   saveInvoice(invoice: IInvoice): Observable<IInvoice> {

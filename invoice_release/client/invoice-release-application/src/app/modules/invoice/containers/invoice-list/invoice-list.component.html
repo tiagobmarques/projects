@@ -20,7 +20,7 @@
         <td>{{invoice?.id}}</td>
         <td class="text-right">{{invoice?.document}}</td>
         <td>{{invoice?.installmentDate}}</td>
-        <td>{{invoice?.participant.name}}</td>
+        <td>{{invoice?.participantName}}</td>
         <td class="text-right">{{invoice?.value}}</td>
       </tr>
     </tbody>
@@ -28,7 +28,7 @@
   <ng-template #emptyList>
     <tbody>
       <tr>
-        <td colspan="3" class="text-center">There is no contact registered</td>
+        <td colspan="5" class="text-center">There is no invoice registered</td>
       </tr>
     </tbody>
   </ng-template>
