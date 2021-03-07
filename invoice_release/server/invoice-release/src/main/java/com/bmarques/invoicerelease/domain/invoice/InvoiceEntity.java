@@ -27,11 +27,8 @@ public class InvoiceEntity {
   @Column(name = "installment_date")
   private LocalDate installmentDate;
   private String document;
-
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "participant_id", referencedColumnName = "id")
-  private ParticipantEntity participant;
-
+  @Column(name = "participant_id")
+  private Integer participantId;
   private Double value;
 
 }

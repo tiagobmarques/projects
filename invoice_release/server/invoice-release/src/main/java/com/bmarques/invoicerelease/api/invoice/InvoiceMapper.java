@@ -16,7 +16,7 @@ public class InvoiceMapper {
         .id(invoiceEntity.getId())
         .document(invoiceEntity.getDocument())
         .installmentDate(invoiceEntity.getInstallmentDate())
-        .participant(participantMapper.toResponse(invoiceEntity.getParticipant()))
+        .participantId(invoiceEntity.getParticipantId())
         .value(invoiceEntity.getValue())
         .build();
   }
@@ -24,7 +24,7 @@ public class InvoiceMapper {
   public InvoiceEntity toEntity(InvoiceRequest invoiceRequest) {
     return InvoiceEntity.builder()
         .id(invoiceRequest.getId())
-        .participant(participantMapper.toEntity(invoiceRequest.getParticipant()))
+        .participantId(invoiceRequest.getParticipantId())
         .document(invoiceRequest.getDocument())
         .installmentDate(invoiceRequest.getInstallmentDate())
         .value(invoiceRequest.getValue())

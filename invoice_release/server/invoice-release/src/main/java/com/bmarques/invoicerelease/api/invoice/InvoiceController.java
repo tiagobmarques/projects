@@ -1,6 +1,7 @@
 package com.bmarques.invoicerelease.api.invoice;
 
 import com.bmarques.invoicerelease.domain.invoice.InvoiceEntity;
+import com.bmarques.invoicerelease.domain.invoice.InvoicePartialDto;
 import com.bmarques.invoicerelease.domain.invoice.InvoiceService;
 import com.bmarques.invoicerelease.domain.participant.ParticipantEntity;
 import java.util.List;
@@ -29,10 +30,8 @@ public class InvoiceController {
   private InvoiceMapper mapper;
 
   @GetMapping
-  public Mono<List<InvoiceResponse>> getAllInvoices() {
+  public Mono<List<InvoicePartialDto>> getAllInvoices() {
     return Mono.fromCallable(() -> invoiceService.getAllInvoices())
-        .map(invoice -> invoice.stream().map(mapper::toResponse)
-            .collect(Collectors.toList()))
         .subscribeOn(Schedulers.boundedElastic());
   }
 

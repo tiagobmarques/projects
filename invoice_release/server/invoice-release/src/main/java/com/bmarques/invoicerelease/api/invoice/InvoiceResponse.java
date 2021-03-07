@@ -19,7 +19,7 @@ public class InvoiceResponse {
   private Integer id;
   private LocalDate installmentDate;
   private String document;
-  private ParticipantResponse participant;
+  private Integer participantId;
   private Double value;
 
 }
