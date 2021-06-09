@@ -1,6 +1,6 @@
-resource "aws_security_group" "internal-server-sg" {
-  name        = "internal-server-sg"
-  description = "This is SG for general internal server."
+resource "aws_security_group" "server-discovery-sg" {
+  name        = "server-discovery-sg"
+  description = "This is SG for general server discovery."
 
   ingress {
     from_port   = 22
@@ -28,7 +28,7 @@ resource "aws_security_group" "internal-server-sg" {
   }
 
   tags = {
-    Name = "internal-server-sg"
+    Name = "server-discovery-sg"
   }
 
   vpc_id  = aws_vpc.vpc-tax.id
