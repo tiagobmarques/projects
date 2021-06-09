@@ -4,7 +4,7 @@ RUN mkdir /opt/apps
 
 WORKDIR /opt/apps
 
-COPY server-discovery/build/libs/server-discovery.jar ./
+COPY build/libs/server-discovery.jar ./
 
 EXPOSE 8080
 

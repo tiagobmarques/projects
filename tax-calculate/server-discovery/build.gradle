@@ -5,6 +5,7 @@ plugins {
 }
 
 bootJar {
+	archiveFileName = "server-discovery.jar"
 	exclude '**/application-dev.properties'
 }
 
