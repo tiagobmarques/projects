@@ -1,6 +1,6 @@
 resource "aws_instance" "server-deploy" {
     count = 1 
-    ami = "ami-0bb2edc4e96f25c77"//This is Jenkins AMI 
+    ami = "ami-0493a6bbcaa7b1bde"//This is Jenkins AMI 
     instance_type = "t2.medium" 
     key_name = "tax-teste" 
 
