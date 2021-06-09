@@ -4,6 +4,10 @@ plugins {
 	id 'java'
 }
 
+bootJar {
+	exclude '**/application-dev.properties'
+}
+
 group = 'com.tax-calculate'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
