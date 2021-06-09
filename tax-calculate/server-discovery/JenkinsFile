@@ -16,7 +16,7 @@ pipeline {
 
     stage("Update Database") {
       steps {
-        sh "cd server-discovery && chmod +x gradlew && ./gradlew flywaymigrate -i"
+        sh "cd tax-calculate/server-discovery && chmod +x gradlew && ./gradlew flywaymigrate -i"
       }
     }
 
