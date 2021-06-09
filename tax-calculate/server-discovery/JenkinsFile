@@ -10,19 +10,13 @@ pipeline {
 
     stage("Build") {
       steps {
-        sh "cd server-discovery && chmod +x gradlew && ./gradlew build"
-      }
-    }
-
-    stage("Update Database") {
-      steps {
-        sh "cd tax-calculate/server-discovery && chmod +x gradlew && ./gradlew flywaymigrate -i"
+        sh "cd tax-calculate/server-discovery && chmod +x gradlew && ./gradlew build"
       }
     }
 
     stage("Docker Push") {
       steps {
-        sh "cd server-discovery && sudo docker build -t server-discovery:latest . && sudo docker tag server-discovery:latest tiagobm564/server-discovery:latest && sudo docker login --username ${DOCKER_USER} --password ${DOCKER_PWD} && sudo docker push tiagobm564/server-discovery:latest"
+        sh "cd tax-calculate/server-discovery && sudo docker build -t server-discovery:latest . && sudo docker tag server-discovery:latest tiagobm564/server-discovery:latest && sudo docker login --username ${DOCKER_USER} --password ${DOCKER_PWD} && sudo docker push tiagobm564/server-discovery:latest"
       }
     }
 
