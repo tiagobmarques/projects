@@ -14,6 +14,12 @@ pipeline {
       }
     }
 
+    stage("Update Database") {
+      steps {
+        sh "cd start-template && chmod +x gradlew && ./gradlew flywaymigrate -i"
+      }
+    }
+
     stage("Docker Push") {
       steps {
         sh "cd tax-calculate/invoice && sudo docker build -t invoice:latest . && sudo docker tag invoice:latest tiagobm564/invoice:latest && sudo docker login --username ${DOCKER_USER} --password ${DOCKER_PWD} && sudo docker push tiagobm564/invoice:latest"
