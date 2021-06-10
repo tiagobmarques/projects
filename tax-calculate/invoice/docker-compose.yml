@@ -21,10 +21,6 @@ services:
       - ./srv/docker/postgresql:/var/lib/postgresql
       - ./database:/docker-entrypoint-initdb.d
 
-volumes:
-  data:
-    driver: local
-
 networks:
   network-backend:
     driver: bridge
