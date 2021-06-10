@@ -1,0 +1,52 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Download sources'){
+      steps{
+        checkout scm
+      }
+    }
+
+    stage("Build") {
+      steps {
+        sh "cd tax-calculate/invoice && chmod +x gradlew && ./gradlew build"
+      }
+    }
+
+    stage("Docker Push") {
+      steps {
+        sh "cd tax-calculate/invoice && sudo docker build -t invoice:latest . && sudo docker tag invoice:latest tiagobm564/invoice:latest && sudo docker login --username ${DOCKER_USER} --password ${DOCKER_PWD} && sudo docker push tiagobm564/invoice:latest"
+      }
+    }
+
+    stage("Docker Run") {
+      steps {
+        script {
+          sshagent(credentials : ['tax-devops-server-deploy']) {
+            sh "echo Connecting to the remote server"
+            sh '''ssh -t -t ubuntu@ip-10-0-16-13.ec2.internal -o StrictHostKeyChecking=no << EOF
+            #!/bin/bash
+            echo ${REMOTE_HOST}
+            echo Connected to Invoice Service App
+            echo Stopping container
+            sudo docker stop -t 0 \\$(sudo docker ps -q)
+            sudo docker container prune --force
+            echo Removing image
+            sudo docker rmi tiagobm564/invoice:latest
+            sudo docker run -d -p 8080:8080 tiagobm564/invoice:latest
+            echo Start Template Application Running!!!
+            exit
+            EOF'''
+          }
+        }
+      }
+    }
+  }
+
+  post {
+    always {
+      cleanWs()
+    }
+  }
+}
