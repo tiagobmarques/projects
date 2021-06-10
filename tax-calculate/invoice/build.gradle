@@ -4,6 +4,11 @@ plugins {
 	id 'java'
 }
 
+bootJar {
+	archiveFileName = "invoice.jar"
+	exclude '**/application-dev.properties'
+}
+
 group = 'com.bmarques'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
