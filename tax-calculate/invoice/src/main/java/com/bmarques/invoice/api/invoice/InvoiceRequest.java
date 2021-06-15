@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -14,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class InvoiceRequest {
 
-    private UUID id;
+    private String id;
     private LocalDate installmentDate;
     private String document;
     private String client;
