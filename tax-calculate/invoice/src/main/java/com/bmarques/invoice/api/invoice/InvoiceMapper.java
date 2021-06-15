@@ -3,8 +3,6 @@ package com.bmarques.invoice.api.invoice;
 import com.bmarques.invoice.domain.invoice.InvoiceEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 @Component
 public class InvoiceMapper {
 

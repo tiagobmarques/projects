@@ -1,24 +1,15 @@
 package com.bmarques.invoice.domain.invoice;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import org.springframework.stereotype.Repository;
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public class InvoiceRepository {
+import java.util.List;
+import java.util.Optional;
 
-    private final DynamoDBMapper dynamoDBMapper;
+@EnableScan
+public interface InvoiceRepository extends CrudRepository<InvoiceEntity, String> {
 
-    public InvoiceRepository(DynamoDBMapper dynamoDBMapper) {
-        this.dynamoDBMapper = dynamoDBMapper;
-    }
+    Optional<InvoiceEntity> findById(String id);
 
-    public InvoiceEntity save(InvoiceEntity invoiceEntity) {
-        dynamoDBMapper.save(invoiceEntity);
-        return invoiceEntity;
-    }
-
-    public InvoiceEntity findById(String invoiceId) {
-        return dynamoDBMapper.load(InvoiceEntity.class, invoiceId);
-    }
-
+    List<InvoiceEntity> findAll();
 }
