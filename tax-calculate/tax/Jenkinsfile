@@ -10,7 +10,7 @@ pipeline {
 
     stage("Build") {
       steps {
-        sh "cd tax-calculate/invoice && chmod +x gradlew && ./gradlew buildZip"
+        sh "cd tax-calculate/tax && chmod +x gradlew && ./gradlew buildZip"
       }
     }
 
