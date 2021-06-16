@@ -1,0 +1,29 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Download sources'){
+      steps{
+        checkout scm
+      }
+    }
+
+    stage("Build") {
+      steps {
+        sh "cd tax-calculate/invoice && chmod +x gradlew && ./gradlew buildZip"
+      }
+    }
+
+    stage("Send Zip to S3") {
+      steps {
+        sh "cd tax-calculate/tax/build/distributions && aws s3 rm s3://tax-lambda-jar-storage/tax-0.0.1-SNAPSHOT.zip && aws s3 cp tax-0.0.1-SNAPSHOT.zip s3://tax-lambda-jar-storage"
+      }
+    }
+  }
+
+  post {
+    always {
+      cleanWs()
+    }
+  }
+}
