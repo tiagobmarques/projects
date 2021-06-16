@@ -6,9 +6,9 @@ This is a simple project to show how use Spring Boot + GitHub + Jenkins + AWS EC
 
 #### Getting Started
 For running this project it's necessary install some items:
--Gradle
--Docker
--Java 11
+* Gradle
+* Docker
+* Java 11
 
 #### Technologies
 * Java 11
