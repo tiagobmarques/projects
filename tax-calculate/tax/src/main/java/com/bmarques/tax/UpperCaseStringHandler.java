@@ -19,6 +19,7 @@ public class UpperCaseStringHandler implements RequestStreamHandler {
     public void handleRequest(InputStream input, OutputStream output, Context context) throws IOException {
         String inputStream = IOUtils.toString(input, StandardCharsets.UTF_8);
         log.info("This is entrypoint!");
+        log.info("This is entrypoint, New!");
         log.info(inputStream);
         output.write(("Hello World - " + inputStream).getBytes());
     }
