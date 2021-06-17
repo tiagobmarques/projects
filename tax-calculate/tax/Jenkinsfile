@@ -19,6 +19,12 @@ pipeline {
         sh "cd tax-calculate/tax/build/distributions && aws s3 rm s3://tax-lambda-jar-storage/tax-0.0.1-SNAPSHOT.zip && aws s3 cp tax-0.0.1-SNAPSHOT.zip s3://tax-lambda-jar-storage"
       }
     }
+
+    stage("Update lambda") {
+      steps {
+        sh "aws lambda update-function-code --function-name tax-lambda --s3-bucket tax-lambda-jar-storage --s3-key tax-0.0.1-SNAPSHOT.zip"
+      }
+    }
   }
 
   post {
