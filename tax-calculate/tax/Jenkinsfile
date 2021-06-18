@@ -10,7 +10,7 @@ pipeline {
 
     stage("Build") {
       steps {
-        sh "sudo cp /home/ubuntu/application.properties /tax-calculate/tax/src/main/resources && cd tax-calculate/tax && chmod +x gradlew && ./gradlew buildZip"
+        sh "sudo cp /home/ubuntu/application.properties . && cd tax-calculate/tax && chmod +x gradlew && ./gradlew buildZip"
       }
     }
 
