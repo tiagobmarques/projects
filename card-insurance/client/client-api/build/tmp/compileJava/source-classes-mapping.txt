@@ -1,0 +1,6 @@
+com/banking/client/controller/v1/client/ClientWS.java
+ com.banking.client.controller.v1.client.ClientWS
+com/banking/client/ClientApplication.java
+ com.banking.client.ClientApplication
+com/banking/client/controller/v1/client/ConfigApplication.java
+ com.banking.client.controller.v1.client.ConfigApplication
