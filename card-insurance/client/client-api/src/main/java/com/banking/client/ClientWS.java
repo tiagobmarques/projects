@@ -1,19 +1,15 @@
-package com.banking.client.controller.v1.client;
+package com.banking.client;
 
+import javax.jws.WebMethod;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 
 @WebService
 public class ClientWS {
 
-    private HealthCheckController healthCheckController;
-
-    public ClientWS() {
-        healthCheckController = new HealthCheckController();
+    @WebMethod(operationName = "HealthCheckMethod")
+    @WebResult(name = "HealthCheckResult")
+    public String applicationIsOK() {
+        return "Is Running";
     }
-
-    //    @WebMethod(operationName = "HealthCheckMethod")
-//    @WebResult(name = "HealthCheckResult")
-//    public String applicationIsOK() {
-//        return "Is Running";
-//    }
 }

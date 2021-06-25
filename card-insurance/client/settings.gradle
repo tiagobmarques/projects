@@ -2,4 +2,6 @@ rootProject.name = 'client'
 
 include 'client-api'
 include 'client-api'
+include 'client-core'
+include 'client-infrastructure'
 
