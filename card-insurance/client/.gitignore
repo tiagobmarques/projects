@@ -45,6 +45,8 @@
 # *.iml
 # *.ipr
 
+srv/
+
 # CMake
 cmake-build-*/
 
@@ -110,7 +112,9 @@ fabric.properties
 
 ### Gradle ###
 .gradle
-build/
+client-api/build/
+client-core/build/
+client-infrastructure/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting

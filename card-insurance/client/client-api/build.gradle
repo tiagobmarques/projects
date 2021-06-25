@@ -7,14 +7,11 @@ bootJar {
 
 dependencies {
 
-//    implementation project(':client-core')
-//    implementation project(':client-infrastructure')
+    implementation project(':client-core')
+    implementation project(':client-infrastructure')
 
     implementation 'org.springframework.boot:spring-boot-autoconfigure:2.3.1.RELEASE'
 //    implementation 'org.springframework.boot:spring-boot-starter-web'
-
-//    implementation 'javax.xml.ws:jaxws-api:2.2.11'
-//    implementation 'com.sun.xml.ws:jaxws-ri:2.3.0'
 
     implementation 'com.sun.xml.ws:jaxws-ri:2.3.3'
 

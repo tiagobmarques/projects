@@ -9,6 +9,12 @@ repositories {
 }
 
 dependencies {
+
+    implementation project(':client-core')
+
+    implementation 'org.springframework.data:spring-data-jdbc'
+    implementation 'org.postgresql:postgresql'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 }
