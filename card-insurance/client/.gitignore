@@ -46,6 +46,7 @@
 # *.ipr
 
 srv/
+.idea/
 
 # CMake
 cmake-build-*/
