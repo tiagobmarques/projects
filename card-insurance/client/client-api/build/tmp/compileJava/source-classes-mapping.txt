@@ -1,8 +1,0 @@
-com/banking/client/api/ClientApplication.java
- com.banking.client.api.ClientApplication
-com/banking/client/api/NotFoundException.java
- com.banking.client.api.NotFoundException
-com/banking/client/api/ClientWS.java
- com.banking.client.api.ClientWS
-com/banking/client/api/ConfigApplication.java
- com.banking.client.api.ConfigApplication
