@@ -21,4 +21,20 @@ public class ClientMapper {
                 .bankAccount(clientEntity.getBankAccount())
                 .build();
     }
+
+    public ClientEntity toEntity(Client client) {
+        return ClientEntity.builder()
+                .id(client.getId())
+                .name(client.getName())
+                .email(client.getEmail())
+                .address(client.getAddress())
+                .neighborhood(client.getNeighborhood())
+                .city(client.getCity())
+                .state(client.getState())
+                .country(client.getCountry())
+                .registryDate(client.getRegistryDate())
+                .bankBranch(client.getBankBranch())
+                .bankAccount(client.getBankAccount())
+                .build();
+    }
 }

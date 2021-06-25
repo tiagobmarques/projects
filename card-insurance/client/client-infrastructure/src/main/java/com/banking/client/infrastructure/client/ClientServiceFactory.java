@@ -24,7 +24,6 @@ public class ClientServiceFactory {
     @Bean
     @Autowired
     public ClientService createProductService(ClientRepository repository) {
-        log.info("Entrou no bean definition primeiro?");
         return new ClientService(repository);
     }
 
