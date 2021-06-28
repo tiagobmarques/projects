@@ -1,11 +1,16 @@
 package com.banking.client.infrastructure.client.postgresql;
 
+import com.banking.client.core.card.Card;
+import com.banking.client.core.client.Client;
+import com.banking.client.infrastructure.card.postgresql.CardEntity;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
+import java.util.Set;
 import java.util.UUID;
 
 @Builder
@@ -42,5 +47,8 @@ public class ClientEntity {
 
     @Column("bank_account")
     private String bankAccount;
+
+    @MappedCollection(idColumn = "client_id")
+    private Set<CardEntity> cards;
 
 }

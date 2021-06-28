@@ -1,8 +1,10 @@
 package com.banking.client.core.client;
 
+import com.banking.client.core.card.Card;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Set;
 import java.util.UUID;
 
 @Builder
@@ -23,4 +25,5 @@ public class Client {
     private LocalDate registryDate;
     private String bankBranch;
     private String bankAccount;
+    private Set<Card> cards;
 }

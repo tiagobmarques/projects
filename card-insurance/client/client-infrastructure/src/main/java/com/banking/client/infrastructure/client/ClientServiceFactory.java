@@ -23,7 +23,7 @@ public class ClientServiceFactory {
 
     @Bean
     @Autowired
-    public ClientService createProductService(ClientRepository repository) {
+    public ClientService createClientService(ClientRepository repository) {
         return new ClientService(repository);
     }
 

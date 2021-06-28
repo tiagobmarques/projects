@@ -1,11 +1,21 @@
 package com.banking.client.infrastructure.client;
 
 import com.banking.client.core.client.Client;
+import com.banking.client.infrastructure.card.CardMapper;
 import com.banking.client.infrastructure.client.postgresql.ClientEntity;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.stream.Collectors;
+
 @Configuration
 public class ClientMapper {
+
+    private final CardMapper cardMapper;
+
+    public ClientMapper(CardMapper cardMapper) {
+        this.cardMapper = cardMapper;
+    }
+
     public Client toClass(ClientEntity clientEntity) {
         return Client.builder()
                 .id(clientEntity.getId())
@@ -19,6 +29,9 @@ public class ClientMapper {
                 .registryDate(clientEntity.getRegistryDate())
                 .bankBranch(clientEntity.getBankBranch())
                 .bankAccount(clientEntity.getBankAccount())
+                .cards(clientEntity.getCards().stream()
+                        .map(cardMapper::toClass)
+                        .collect(Collectors.toSet()))
                 .build();
     }
 
@@ -35,6 +48,9 @@ public class ClientMapper {
                 .registryDate(client.getRegistryDate())
                 .bankBranch(client.getBankBranch())
                 .bankAccount(client.getBankAccount())
+                .cards(client.getCards().stream()
+                        .map(cardMapper::toEntity)
+                        .collect(Collectors.toSet()))
                 .build();
     }
 }
