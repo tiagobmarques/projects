@@ -55,20 +55,20 @@ subprojects {
     }
 }
 
-//flyway {
-//
-//	def props = new Properties()
-//
-//	file("card-insurance-api/src/main/resources/application-prod.properties").withInputStream { props.load(it) }
-//
-//	def dataSourceUrl = props.getProperty("spring.datasource.url")
-//	def dataSourceUser = props.getProperty("spring.datasource.username")
-//	def dataSourcePassword = props.getProperty("spring.datasource.password")
-//
-//	driver = 'org.postgresql.Driver'
-//	url = dataSourceUrl
-//	user = dataSourceUser
-//	password = dataSourcePassword
-//
-//	locations = ['filesystem:database']
-//}
+flyway {
+
+	def props = new Properties()
+
+	file("client-api/src/main/resources/application-prod.properties").withInputStream { props.load(it) }
+
+	def dataSourceUrl = props.getProperty("spring.datasource.url")
+	def dataSourceUser = props.getProperty("spring.datasource.username")
+	def dataSourcePassword = props.getProperty("spring.datasource.password")
+
+	driver = 'org.postgresql.Driver'
+	url = dataSourceUrl
+	user = dataSourceUser
+	password = dataSourcePassword
+
+	locations = ['filesystem:database']
+}
