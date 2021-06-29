@@ -1,0 +1,52 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Download sources'){
+      steps{
+        checkout scm
+      }
+    }
+
+    stage("Build") {
+      steps {
+        sh "cd card-insurance/client/ && chmod +x gradlew && ./gradlew build"
+      }
+    }
+
+    stage("Send Zip to S3") {
+      steps {
+        sh "cd card-insurance/client/client-api/build/libs && aws s3 rm s3://card-insurance-storage/client-api.jar && aws s3 cp client-api.jar s3://card-insurance-storage"
+      }
+    }
+
+    stage("Run Java Application") {
+      steps {
+        script {
+            sshagent(credentials : ['tax-devops-server-deploy']) {
+                sh "echo Connecting to the remote server"
+                sh '''ssh -t -t ubuntu@ip-10-0-16-13.ec2.internal -o StrictHostKeyChecking=no << EOF
+                #!/bin/bash
+                echo ${REMOTE_HOST}
+                echo Connected to Invoice Service App
+                echo Stopping container
+                sudo docker stop -t 0 \\$(sudo docker ps -q)
+                sudo docker container prune --force
+                echo Removing image
+                sudo docker rmi tiagobm564/invoice:latest
+                sudo docker run -d -p 8080:8080 tiagobm564/invoice:latest
+                echo Start Template Application Running!!!
+                exit
+                EOF'''
+            }
+        }
+      }
+    }
+  }
+
+  post {
+    always {
+      cleanWs()
+    }
+  }
+}
