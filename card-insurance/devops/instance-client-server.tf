@@ -1,6 +1,6 @@
 resource "aws_instance" "client-service" {
     count = 1 
-    ami = "ami-09e67e426f25ce0d7"//This is a AMI with Ubuntu Server 20.04 LTS
+    ami = "ami-0f8357bdf347cc9d8"//This is a AMI for Internal services, ex: Java
     instance_type = "t2.micro" 
     key_name = "tax-teste" 
     tags = {
