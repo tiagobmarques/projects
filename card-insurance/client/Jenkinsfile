@@ -31,7 +31,7 @@ pipeline {
                 echo Connected to Client Service App
                 echo Stopping container
                 wget https://card-insurance-storage.s3.amazonaws.com/client-api.jar
-                java -jar -Dspring.profiles.active=prod client-api.jar
+                java -jar -Dspring.profiles.active=prod client-api.jar &
                 echo Client Service Application Running!!!
                 exit
                 EOF'''
