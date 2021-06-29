@@ -16,7 +16,7 @@ pipeline {
 
     stage("Send Zip to S3") {
       steps {
-        sh "cd card-insurance/client/client-api/build/libs && aws s3 rm s3://card-insurance-storage/client-api.jar && aws s3 cp client-api.jar s3://card-insurance-storage"
+        sh "cd card-insurance/client/client-api/build/libs && aws s3 rm s3://card-insurance-storage/client-api.jar && aws s3 cp --acl public-read client-api.jar s3://card-insurance-storage"
       }
     }
 
@@ -30,11 +30,8 @@ pipeline {
                 echo ${REMOTE_HOST}
                 echo Connected to Invoice Service App
                 echo Stopping container
-                sudo docker stop -t 0 \\$(sudo docker ps -q)
-                sudo docker container prune --force
-                echo Removing image
-                sudo docker rmi tiagobm564/invoice:latest
-                sudo docker run -d -p 8080:8080 tiagobm564/invoice:latest
+                wget https://card-insurance-storage.s3.amazonaws.com/client-api.jar
+                java -jar -Dspring.profiles.active=prod client-api.jar
                 echo Start Template Application Running!!!
                 exit
                 EOF'''
