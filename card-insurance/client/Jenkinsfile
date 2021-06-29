@@ -28,11 +28,11 @@ pipeline {
                 sh '''ssh -t -t ubuntu@ip-10-0-16-13.ec2.internal -o StrictHostKeyChecking=no << EOF
                 #!/bin/bash
                 echo ${REMOTE_HOST}
-                echo Connected to Invoice Service App
+                echo Connected to Client Service App
                 echo Stopping container
                 wget https://card-insurance-storage.s3.amazonaws.com/client-api.jar
                 java -jar -Dspring.profiles.active=prod client-api.jar
-                echo Start Template Application Running!!!
+                echo Client Service Application Running!!!
                 exit
                 EOF'''
             }
