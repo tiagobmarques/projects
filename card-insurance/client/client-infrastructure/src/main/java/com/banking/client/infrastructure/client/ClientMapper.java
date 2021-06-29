@@ -29,9 +29,10 @@ public class ClientMapper {
                 .registryDate(clientEntity.getRegistryDate())
                 .bankBranch(clientEntity.getBankBranch())
                 .bankAccount(clientEntity.getBankAccount())
-                .cards(clientEntity.getCards().stream()
-                        .map(cardMapper::toClass)
-                        .collect(Collectors.toSet()))
+                .cards(clientEntity.getCards() != null ?
+                        clientEntity.getCards().stream()
+                                .map(cardMapper::toClass)
+                                .collect(Collectors.toSet()) : null)
                 .build();
     }
 
@@ -48,9 +49,10 @@ public class ClientMapper {
                 .registryDate(client.getRegistryDate())
                 .bankBranch(client.getBankBranch())
                 .bankAccount(client.getBankAccount())
-                .cards(client.getCards().stream()
-                        .map(cardMapper::toEntity)
-                        .collect(Collectors.toSet()))
+                .cards(client.getCards() != null ?
+                        client.getCards().stream()
+                                .map(cardMapper::toEntity)
+                                .collect(Collectors.toSet()) : null)
                 .build();
     }
 }
