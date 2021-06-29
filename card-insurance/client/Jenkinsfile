@@ -29,7 +29,7 @@ pipeline {
                 #!/bin/bash
                 echo ${REMOTE_HOST}
                 echo Connected to Client Service App
-                echo Stopping container
+                rm -f client-api.jar
                 wget https://card-insurance-storage.s3.amazonaws.com/client-api.jar
                 java -jar -Dspring.profiles.active=prod client-api.jar &
                 echo Client Service Application Running!!!
