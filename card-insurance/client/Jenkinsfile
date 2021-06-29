@@ -27,13 +27,11 @@ pipeline {
                 sh "echo Connecting to the remote server"
                 sh '''ssh -t -t ubuntu@ip-10-0-16-13.ec2.internal -o StrictHostKeyChecking=no << EOF
                 #!/bin/bash
-                echo ${REMOTE_HOST}
                 echo Connected to Client Service App
                 pkill -9 -f java
                 rm -f client-api.jar
                 wget https://card-insurance-storage.s3.amazonaws.com/client-api.jar
                 java -jar -Dspring.profiles.active=prod client-api.jar &
-                echo Client Service Application Running!!!
                 exit
                 EOF'''
             }
