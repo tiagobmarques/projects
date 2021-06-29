@@ -10,7 +10,7 @@ pipeline {
 
     stage("Build") {
       steps {
-        sh "cd card-insurance/client/ && chmod +x gradlew && ./gradlew build"
+        sh "cd card-insurance/client/ && chmod +x gradlew && ./gradlew build && ./gradlew flywaymigrate -i"
       }
     }
 
