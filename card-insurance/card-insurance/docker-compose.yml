@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  mq:
+    image: localstack/localstack
+    container_name: "card-insurance-localstack"
+    expose:
+      - "4566"
+    ports:
+      - 4566:4566
+
+networks:
+  network-backend:
+    driver: bridge
