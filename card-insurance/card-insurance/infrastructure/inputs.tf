@@ -1,11 +1,7 @@
 variable "environment" {
   type        = string
   description = "dev"
-}
-
-variable "table-name" {
-  type        = string
-  description = "Table name in DynamoDB"
+  default     = "dev"
 }
 
 variable "region" {

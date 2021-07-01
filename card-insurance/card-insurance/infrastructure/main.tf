@@ -1,22 +1,22 @@
 #############################
 # DynamoDB
 #############################
-resource "aws_dynamodb_table" "main-table" {
-  name           = var.table-name
+resource "aws_dynamodb_table" "coverage-table" {
+  name           = "coverage"
   billing_mode   = "PROVISIONED"
   read_capacity  = 2
   write_capacity = 2
-  hash_key       = "employeeId"
+  hash_key       = "coverageId"
   stream_enabled   = true
   stream_view_type = "NEW_IMAGE"
 
   attribute {
-    name = "employeeId"
+    name = "coverageId"
     type = "S"
   }
 
   tags = {
-    Name        = "${var.table-name}-${var.environment}"
-    Environment = var.environment
+    Name        = "coverage-${var.environment}"
+    Environment = "coverage"
   }
 }
