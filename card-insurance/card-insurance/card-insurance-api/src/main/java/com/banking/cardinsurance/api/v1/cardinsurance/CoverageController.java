@@ -4,9 +4,8 @@ import com.banking.cardinsurance.core.cardinsurance.CardInsuranceService;
 import com.banking.cardinsurance.core.cardinsurance.Coverage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +20,11 @@ public class CoverageController {
     @GetMapping
     public List<Coverage> findAllCoverages() {
         return service.findAllCoverages();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Coverage saveCoverage(@RequestBody Coverage coverage) {
+        return service.save(coverage);
     }
 }

@@ -13,4 +13,8 @@ public class CardInsuranceService {
     public List<Coverage> findAllCoverages() {
         return coverageRepository.findAll();
     }
+
+    public Coverage save(Coverage coverage) {
+        return coverageRepository.save(coverage);
+    }
 }

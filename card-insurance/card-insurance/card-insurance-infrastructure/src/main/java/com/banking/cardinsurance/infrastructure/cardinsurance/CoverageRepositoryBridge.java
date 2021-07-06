@@ -26,4 +26,10 @@ public class CoverageRepositoryBridge implements CoverageRepository {
                 .map(mapper::toClass)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public Coverage save(Coverage coverage) {
+        CoverageEntity save = repository.save(mapper.toEntity(coverage));
+        return mapper.toClass(save);
+    }
 }
